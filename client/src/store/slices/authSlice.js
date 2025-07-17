@@ -94,7 +94,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.message = action.payload.message;
     },
-    forgotPasswordFailure(state,action) {
+    forgotPasswordFailure(state, action) {
       state.loading = false;
       state.error = action.payload;
     },
@@ -109,7 +109,7 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.isAuthenticated = true;
     },
-    resetPasswordFailure(state,action) {
+    resetPasswordFailure(state, action) {
       state.loading = false;
       state.error = action.payload;
     },
@@ -124,7 +124,7 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.isAuthenticated = true;
     },
-    updatePasswordFailure(state,action) {
+    updatePasswordFailure(state, action) {
       state.loading = false;
       state.error = action.payload;
     },
@@ -145,7 +145,7 @@ export const resetAuthSlice = () => (dispatch) => {
 export const register = (data) => async (dispatch) => {
   dispatch(authSlice.actions.registerRequest());
   await axios
-    .post("http://localhost:4000/api/v1/auth/register", data, {
+    .post("https://librotrack.onrender.com/api/v1/auth/register", data, {
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",
@@ -162,7 +162,7 @@ export const otpVerification = (email, otp) => async (dispatch) => {
   dispatch(authSlice.actions.otpVerificationRequest());
   await axios
     .post(
-      "http://localhost:4000/api/v1/auth/verify-otp",
+      "https://librotrack.onrender.com/api/v1/auth/verify-otp",
       { email, otp },
       {
         withCredentials: true,
@@ -183,7 +183,7 @@ export const otpVerification = (email, otp) => async (dispatch) => {
 export const login = (data) => async (dispatch) => {
   dispatch(authSlice.actions.loginRequest());
   await axios
-    .post("http://localhost:4000/api/v1/auth/login", data, {
+    .post("https://librotrack.onrender.com/api/v1/auth/login", data, {
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",
@@ -199,7 +199,7 @@ export const login = (data) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch(authSlice.actions.logoutRequest());
   await axios
-    .get("http://localhost:4000/api/v1/auth/logout", {
+    .get("https://librotrack.onrender.com/api/v1/auth/logout", {
       withCredentials: true,
     })
     .then((res) => {
@@ -213,7 +213,7 @@ export const logout = () => async (dispatch) => {
 export const getUser = () => async (dispatch) => {
   dispatch(authSlice.actions.getUserRequest());
   await axios
-    .get("http://localhost:4000/api/v1/auth/me", {
+    .get("https://librotrack.onrender.com/api/v1/auth/me", {
       withCredentials: true,
     })
     .then((res) => {
@@ -228,7 +228,7 @@ export const forgotPassword = (email) => async (dispatch) => {
   dispatch(authSlice.actions.forgotPasswordRequest());
   await axios
     .post(
-      "http://localhost:4000/api/v1/auth/password/forget",
+      "https://librotrack.onrender.com/api/v1/auth/password/forget",
       { email },
       {
         withCredentials: true,
@@ -249,12 +249,16 @@ export const forgotPassword = (email) => async (dispatch) => {
 export const resetPassword = (data, token) => async (dispatch) => {
   dispatch(authSlice.actions.resetPasswordRequest());
   await axios
-    .put(`http://localhost:4000/api/v1/auth/password/reset/${token}`, data, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    .put(
+      `https://librotrack.onrender.com/api/v1/auth/password/reset/${token}`,
+      data,
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
     .then((res) => {
       dispatch(authSlice.actions.resetPasswordSuccess(res.data));
     })
@@ -267,7 +271,7 @@ export const resetPassword = (data, token) => async (dispatch) => {
 export const updatePassword = (data) => async (dispatch) => {
   dispatch(authSlice.actions.updatePasswordRequest());
   await axios
-    .put("http://localhost:4000/api/v1/auth/password/update", data, {
+    .put("https://librotrack.onrender.com/api/v1/auth/password/update", data, {
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",
