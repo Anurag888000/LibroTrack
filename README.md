@@ -1,0 +1,1 @@
+LibroTrack is a clean, user-friendly library management system built with React, Node.js, and MongoDB, allowing users to browse, borrow, and track books while providing admins with easy book and user management.
