@@ -8,9 +8,9 @@ A **full-stack library management system** for managing books, users, and borrow
 
 ## 🖼️ Demo Screenshots
 
-![Dashboard](demo/dashboard.png)
-![Book Management](demo/book-management.png)
-![User Dashboard](demo/user-dashboard.png)
+![Dashboard](Demo/dashboard.png)
+![Book Management](Demo/book-management.png)
+![User Dashboard](Demo/user-dashboard.png)
 
 ---
 
